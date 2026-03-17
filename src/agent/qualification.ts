@@ -2,18 +2,20 @@ import type { CollectedData, QualificationSummary, QualificationReason } from '.
 
 /**
  * Deterministic Qualification Engine
- * 
- * Rules:
- * 1. Contact confirmed (name provided) — 1 point
- * 2. Location specified — 1 point
- * 3. Property type specified — 1 point
- * 4. Topology/subtype specified — 1 point
- * 5. Budget provided & parseable — 1 point
- * 6. Consent to sales call — 2 points (weighted higher)
- * 7. Properties available (count > 0) — 1 point
- * 
- * Qualified: score >= 5 out of 8 AND consent === true AND propertyCount > 0
- * Not Qualified: otherwise
+ *
+ * PRIMARY RULE (matches assignment spec exactly):
+ *   IF consent == "Yes" AND property_count > 0 → QUALIFIED
+ *   ELSE → NOT QUALIFIED
+ *
+ * Score (for transparency / reporting, not for gating):
+ *   1. Contact name confirmed  — 1 pt
+ *   2. Location specified      — 1 pt
+ *   3. Property type specified — 1 pt
+ *   4. Topology/subtype given  — 1 pt
+ *   5. Budget provided         — 1 pt
+ *   6. Consent to sales call   — 2 pts (weighted)
+ *   7. Properties found > 0    — 1 pt
+ *   Max score: 8
  */
 
 export function qualifyLead(

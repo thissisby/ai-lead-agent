@@ -45,30 +45,37 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 flex items-center justify-center p-4">
-      {/* Background decorations */}
+      {/* Ambient background blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="w-full max-w-lg relative">
+      <div className="w-full max-w-lg relative animate-fade-in-up">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg shadow-blue-500/25 mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg shadow-blue-500/30 mb-4 animate-pulse-glow">
             <Sparkles className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">RealtyAssistant</h1>
-          <p className="text-blue-200/70 text-sm">AI-Powered Property Lead Qualification Agent</p>
+          <h1 className="text-3xl font-extrabold text-white mb-2 tracking-tight">RealtyAssistant</h1>
+          <p className="text-blue-200/60 text-sm">AI-Powered Property Lead Qualification Agent</p>
         </div>
 
         {/* Form Card */}
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold text-white">Submit Your Enquiry</h2>
+          <div className="mb-5">
+            <h2 className="text-xl font-bold text-white">Submit Your Enquiry</h2>
             <p className="text-sm text-blue-200/50 mt-1">
-              Enter your details to start the AI qualification chat
+              Enter your details and our AI agent will start a qualification chat
             </p>
+          </div>
+
+          {/* Feature highlights */}
+          <div className="flex flex-wrap gap-2 mb-5">
+            {['6-Step AI Chat', 'Instant Qualification', 'realtyassistant.in Search'].map(f => (
+              <span key={f} className="text-[10px] px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 font-medium">{f}</span>
+            ))}
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -141,12 +148,10 @@ export default function LeadForm({ onSubmit }: LeadFormProps) {
           </p>
         </div>
 
-        {/* Integration badges */}
-        <div className="flex items-center justify-center gap-4 mt-6 flex-wrap">
+        {/* Tech badges */}
+        <div className="flex items-center justify-center gap-3 mt-5 flex-wrap">
           {['Groq AI', 'Twilio Voice', 'VAPI.ai', 'realtyassistant.in'].map(badge => (
-            <span key={badge} className="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-blue-200/50">
-              {badge}
-            </span>
+            <span key={badge} className="text-[10px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-500 hover:text-slate-400 transition">{badge}</span>
           ))}
         </div>
       </div>
